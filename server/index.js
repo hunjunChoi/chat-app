@@ -33,6 +33,27 @@ const server = http.createServer(app);
 /* basic run down to make socket.io server working  */
 const io = socketio(server);
 
+/* io.on --> built-in method, keyword connection
+run when client connection on io instance
+disconnect --> special built-in
+using both "connection" & "disconnect" --> register client joining & leaving in app */
+
+// socket --> connected as with client side socket
+io.on("connection", (socket) => {
+    console.log("We have a new connection!!!");
+
+    // inside --> all code run in this function
+    // b.c. managing this specific connected socket
+
+    // specific socket
+    // no parameter --> b.c. user left
+    socket.on("disconnect", () => {
+        console.log("User had left!!!");
+    });
+
+    /* create basic client side --> receive real time connection & disconnection in terminal */
+});
+
 app.use(router);
 
 // server running

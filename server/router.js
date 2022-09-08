@@ -10,5 +10,5 @@ router.get("/", (req, res) => {
 });
 
 // after create route --> export
-module.exports(router);
+module.exports = router;
 // require in index.js
